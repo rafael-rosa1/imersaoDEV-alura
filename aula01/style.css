@@ -1,0 +1,74 @@
+body {
+  font-family: 'Roboto Mono',monospace;
+  min-height: 400px;
+  background-image: url('https://image.flaticon.com/icons/png/512/201/201635.png');
+  background-color: #000000;
+  background-size: 80vh;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+}
+
+.container {
+  text-align: center;
+  padding: 20px;
+  height: 100vh;
+}
+
+.page-title {
+  color:#ffffff;
+  margin: 0 0 5px;
+}
+
+.page-subtitle {
+  color:#ffffff;
+  margin-top: 5px;
+}
+
+.page-logo {
+  width: 200px;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+}
+
+.alura-logo {
+  width: 40px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+form {
+  color: greenyellow;
+  font-weight: bold;
+  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  line-height: 2;
+  width: fit-content;
+  align-items: flex-end;
+  margin: 0 auto;
+}
+
+label {
+  text-shadow: 1px 2px 2px black;
+}
+
+input {
+  font-size: 2rem;
+}
+
+.botao__media {
+  align-self: center;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  background-color: greenyellow;
+}
+
+textarea {
+  width: 100%;
+  margin-top: 2rem;
+  font-size: 1.3rem;
+}
