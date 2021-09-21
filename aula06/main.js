@@ -33,10 +33,12 @@ function exibeJogadoresNaTela(jogadores) {
     <td>${jogadores[i].pontos}</td>
     <td><button onClick="adicionarVitoria(${i})">Vitória</button></td>
     <td><button onClick="adicionarEmpate(${i})">Empate</button></td>
-    <td><button onClick="adicionarDerrota(${i})">Derrota</button></td></tr>`
+    <td><button onClick="adicionarDerrota(${i})">Derrota</button></td>
+    <td><button onClick="excluirJogador(${i})">Excluir</button></td></tr>`
   }
   var tabelaJogadores = document.querySelector('[data-table]')
   tabelaJogadores.innerHTML = elemento
+  mostraStatus()
 }
 
 function adicionarVitoria(jogador) {
@@ -92,6 +94,37 @@ const adicionarJogador = () => {
     alert("Digite um nome")
   }
 }
-adicionaJogador.addEventListener('click', adicionarJogador)
 
-//logica para numero de jogos ter congruencia
+function excluirJogador(indiceJogador) {
+  jogadores.splice(indiceJogador, 1)
+  exibeJogadoresNaTela(jogadores)
+} 
+
+
+function mostraStatus() {
+  var statusJogo = document.querySelector('[data-status]')
+  var vitorias = 0
+  var derrotas = 0
+  var empates = 0
+  for (var indexJogador = 0; indexJogador < jogadores.length; indexJogador++) {
+    vitorias += jogadores[indexJogador].vitorias
+    derrotas += jogadores[indexJogador].derrotas
+    empates += jogadores[indexJogador].empates
+  } 
+
+  if(vitorias != derrotas) {
+    if(empates%2 != 0) {
+      statusJogo.innerHTML = `Número de derrotas e vitórias incorreto, empates não são compativeis`
+    } else {
+      statusJogo.innerHTML = `Número de derrotas e vitórias incorreto`
+    }
+  } else if (vitorias == derrotas) {
+    if (empates%2 != 0) {
+      statusJogo.innerHTML = `Empates não são compativeis`
+    } else {
+      statusJogo.innerHTML = `Tudo certo`
+    }
+  }
+
+}
+adicionaJogador.addEventListener('click', adicionarJogador)

@@ -67,3 +67,17 @@ label {
   color: #fdfdfd;
   margin-right: 0.5rem;
 }
+
+.informacoes {
+  color: #fdfdfd;
+  text-align: center;
+  width: 50%;
+  margin: 0 auto;
+  background: rgba(128, 128, 128, 0.404);
+  margin-top: 2rem;
+  border-radius: 8px;
+}
+
+.informacoes p {
+  font-size: 1.3rem;
+}
