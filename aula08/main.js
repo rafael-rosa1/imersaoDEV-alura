@@ -5,7 +5,7 @@ var todasCartas = [{
       defesa: 9, 
       magia: 6
     },
-    imagem: "https://2.bp.blogspot.com/-fEgn3k2js5A/UO5S_Sso3LI/AAAAAAAANGY/ZH33ZO1oHsY/s1600/Monkey+D.+Luffy+(TimeSkip+-+Novo+Mundo).jpg"
+    imagem: "http://pm1.narvii.com/6511/713ea8475e05b05aead72aea3c96784e4d90d7ea_00.jpg"
   },
   {
     nome: "Edward Elric", 
@@ -19,9 +19,10 @@ var todasCartas = [{
   {
     nome: "Shiryu de dragão", 
     atributos: {
-      ataque: 5, 
-      defesa: 9, 
-      magia: 10},
+      ataque: 6, 
+      defesa: 7, 
+      magia: 8
+    },
     imagem: "https://img.elo7.com.br/product/zoom/2B30956/poster-quadro-shiryu-de-dragao-30x42cm-nerd.jpg"
   },
   {
@@ -79,9 +80,9 @@ var todasCartas = [{
   {
     nome: "Rock Lee", 
     atributos: {
-      ataque: 5, 
-      defesa: 9, 
-      magia: 10
+      ataque: 8, 
+      defesa: 7, 
+      magia: 0
     },
     imagem: "https://ovicio.com.br/wp-content/uploads/2021/07/20210716-rock-lee.jpg"
   },
@@ -89,7 +90,7 @@ var todasCartas = [{
     nome: "Goku", 
     atributos: {
       ataque: 10, 
-      defesa: 10, 
+      defesa: 8, 
       magia: 10
     },
     imagem: "https://nerdhits.com.br/wp-content/uploads/2020/05/instinto-superior-goku-1200x675.jpg"
@@ -113,11 +114,11 @@ var todasCartas = [{
     imagem: "http://nippotv.com/wp-content/uploads/2013/08/bucky_the_incredible_kid-7213.jpg"
   },
   {
-    nome: "Saitama - Super Trunfo", 
+    nome: "Saitama", 
     atributos: {
-      ataque: 11, 
-      defesa: 11, 
-      magia: 11
+      ataque: 10, 
+      defesa: 10, 
+      magia: 0
     },
     imagem: "https://criticalhits.com.br/wp-content/uploads/2020/09/Saitama.jpg"
   },
@@ -137,7 +138,7 @@ var todasCartas = [{
       defesa: 4, 
       magia: 9
     },
-    imagem: "https://ae01.alicdn.com/kf/H15bac4b8b284415ba1b942a99203e9c6H.jpg"
+    imagem: "https://i.pinimg.com/originals/48/60/45/48604552dcbd6e9e25fb4c7267d045b5.png"
   },
   {
     nome: "Guts", 
@@ -175,8 +176,10 @@ var todasCartas = [{
     },
     imagem: "https://i1.sndcdn.com/artworks-BkCSBE4usKm7ocno-wTagAw-t500x500.jpg"
   }]
-  
+//embaralha cartas antes de dividir
+todasCartas.sort( () => Math.random() - 0.5)
 
+var imagemMisteriosa = "https://health.wyo.gov/wp-content/uploads/2017/05/question-mark-on-chalkboard.jpg"
 var cartasJogador = []
 var cartasMaquina = []
 
@@ -201,17 +204,34 @@ function divideCartas() {
 var cartaMaquina
 var cartaJogador
 
+const divCartajogador = document.querySelector('[data-cartaJogador]')
+divCartajogador.style.backgroundImage = `url(${imagemMisteriosa})`
+const divCartaMaquina = document.querySelector('[data-cartaMaquina]')
+divCartaMaquina.style.backgroundImage = `url(${imagemMisteriosa})`
+
 function sortearCarta() {  
-  var numeroCartaMaquina = parseInt(Math.random() * cartasMaquina.length)
-  cartaMaquina = cartasMaquina[numeroCartaMaquina]
-  
-  var numeroCartaJogador = parseInt(Math.random() * cartasJogador.length)
-  cartaJogador = cartasJogador[numeroCartaJogador]
-  
-  document.querySelector('[data-sortear]').disabled = true
-  document.querySelector('[data-jogar]').disabled = false
-  exibirCartaJogador()
+  var divResultado = document.querySelector('[data-resultado]')
+  if (cartasJogador.length != 0 && cartasMaquina.length != 0) {
+    var numeroCartaMaquina = parseInt(Math.random() * cartasMaquina.length)
+    cartaMaquina = cartasMaquina[numeroCartaMaquina]
+    
+    var numeroCartaJogador = parseInt(Math.random() * cartasJogador.length)
+    cartaJogador = cartasJogador[numeroCartaJogador]
+    const divCartaMaquina = document.querySelector('[data-cartaMaquina]')
+    divCartaMaquina.style.backgroundImage = `url(${imagemMisteriosa})`
+    document.querySelector('[data-sortear]').disabled = true
+    document.querySelector('[data-jogar]').disabled = false
+    exibirCartaJogador()
+    esconderCartaMaquina()
+  } else if (cartasJogador.length == 0) {
+      divResultado.innerHTML = `<p class="resultado-final"> Fim de Jogo. Vitória da Maquina!</p><br><input type="button" class="botao__reset" onclick="resetar()" value="JOGAR NOVAMENTE">`
+      document.querySelector('[data-sortear]').disabled = true
+  } else if (cartasMaquina.length == 0) {
+      divResultado.innerHTML = `<p class="resultado-final"> Fim de Jogo. Você venceu!</p><br><input type="button" class="botao__reset" onclick="resetar()" value="JOGAR NOVAMENTE">`
+      document.querySelector('[data-sortear]').disabled = true
+  }
 }
+  
 
 function obtemAtributoSelecionado() {
   var radioAtributos = document.getElementsByName('atributo')
@@ -231,11 +251,16 @@ function jogar() {
   
   if(valorAtributoJogador > valorAtributoMaquina) {
     htmlResultado = `<p class="resultado-final">Vitória</p>`
+    cartasJogador.push(cartaMaquina)
+    cartasMaquina.splice(cartasMaquina.indexOf(cartaMaquina), 1)
   } else if (valorAtributoMaquina > valorAtributoJogador) {
     htmlResultado = `<p class="resultado-final">Derrota</p>`
+    cartasMaquina.push(cartaJogador)
+    cartasJogador.splice(cartasJogador.indexOf(cartaJogador), 1)
   } else {
     htmlResultado = `<p class="resultado-final">Empate</p>`
   }
+  
   divResultado.innerHTML = htmlResultado
   document.querySelector('[data-sortear]').disabled = false
   document.querySelector('[data-jogar]').disabled = true
@@ -272,9 +297,24 @@ function exibirCartaMaquina() {
  
 }
 
+function esconderCartaMaquina() {
+  const divCartaMaquina = document.querySelector('[data-cartaMaquina]')
+  divCartaMaquina.style.backgroundImage = `url(${imagemMisteriosa})`
+  var moldura = '<img src="https://www.alura.com.br/assets/img/imersoes/dev-2021/card-super-trunfo-transparent.png" style=" width: inherit; height: inherit; position: absolute;">'
+  var tagHTML = "<div id='opcoes' class='carta-status'>"
 
-//quando ganhar retirar a carta da lista da maquina e adicionar na lista do jogador
+  var opcoesTexto = ""
+  for (var atributo in cartaMaquina.atributos) {
+    opcoesTexto += `<p>${atributo}: ?</p>`
+  }
+  var nome = `<p class="carta-subtitle">????????</p>`
+  divCartaMaquina.innerHTML = moldura + nome + tagHTML + opcoesTexto + "</div>"
+}
+
+function resetar() {
+  document.location.reload(true)
+}
+ 
+
 
 //uma rodada jogador escolhe o atributo, na outra a maquina escolhe o maior atributo de sua carta
-
-//animação carta "batendo"

@@ -125,6 +125,5 @@ function mostraStatus() {
       statusJogo.innerHTML = `Tudo certo`
     }
   }
-
 }
 adicionaJogador.addEventListener('click', adicionarJogador)
