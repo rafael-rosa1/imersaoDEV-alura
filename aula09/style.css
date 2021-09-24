@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
+
+body {
+  background: linear-gradient(236.85deg, #b62929 27.26%, #ddda38 96.03%);
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.container {
+  background: #f7f7f7;
+  margin: 64px;
+  border-radius: 24px;
+  box-shadow: 4px 4px 4px #642d26;
+  color: #1c1c1c;
+  padding: 64px;
+}
+
+.perfil {
+  display: flex;
+  align-items: center;
+}
+
+.perfil__foto {
+  border-radius: 460px;
+  max-height: 180px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.titulo {
+  margin-left: 20px;
+}
+
+.titulo h1 {
+  font-weight: 700;
+  font-size: 36px;
+}
+
+.titulo h3 {
+  font-weight: 400;
+  font-size: 24px;
+}
+
+.titulo__redes {
+  display: flex;
+  justify-content: space-between;
+  height: 100px;
+}
+
+.titulo__redes--logo {
+  width: 50px;
+}
+
+.titulo__redes--logo:hover {
+  width: 60px;
+  transition: 500ms;
+}
+
+.projetos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(230.65deg, #499CFE 27.49%, #9CC8FC 83.19%);
+  box-shadow: 2px 2px 4px rgba(16, 16, 16, 0.42);
+  border-radius: 20px;
+  margin-top: 40px;
+}
+
+.projetos__lista {
+  line-height: 60px;
+  padding-left: 0;
+  margin-bottom: 70px;
+}
+
+.projetos__item {
+  list-style: none;
+  text-align: center;
+}
+
+.projetos__titulo {
+  font-size: 48px;
+  font-weight: 700;
+  color: #1c1c1c;
+  text-align: center;
+  margin-top: 100px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 36px;
+  font-weight: 400;
+  color: #1c1c1c;
+}
+
+a:hover {
+  color: #b0bec5;
+  transition: 500ms;
+}
