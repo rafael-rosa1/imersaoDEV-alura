@@ -314,7 +314,3 @@ function esconderCartaMaquina() {
 function resetar() {
   document.location.reload(true)
 }
- 
-
-
-//uma rodada jogador escolhe o atributo, na outra a maquina escolhe o maior atributo de sua carta

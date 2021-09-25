@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
+
+body {
+  background: linear-gradient(236.85deg, #b62929 27.26%, #ddda38 96.03%);
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.container {
+  background: #f7f7f7;
+  margin: 64px;
+  border-radius: 24px;
+  box-shadow: 4px 4px 4px #642d26;
+  color: #1c1c1c;
+  padding: 64px;
+}
+
+.perfil {
+  display: flex;
+  align-items: center;
+}
+
+.perfil__foto {
+  border-radius: 460px;
+  max-height: 180px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.titulo {
+  margin-left: 20px;
+}
+
+.titulo h1 {
+  font-weight: 700;
+  font-size: 36px;
+}
+
+.titulo h3 {
+  font-weight: 400;
+  font-size: 24px;
+}
+
+.titulo__redes {
+  display: flex;
+  justify-content: space-between;
+  height: 100px;
+}
+
+.titulo__redes--logo {
+  width: 50px;
+}
+
+.titulo__redes--logo:hover {
+  width: 60px;
+  transition: 500ms;
+}
+
+.tema {
+  display: flex;
+  align-self: flex-start;
+  justify-content: flex-end;  
+  flex-grow: 1;
+}
+
+.tema button {
+  color: #0E1D2F;
+  font-size: 24px;
+  font-weight: 400;
+  border-radius: 100px;
+  padding: 8px 16px;
+  background: #ECF4FF;
+  border: 2px solid #0E1D2F;
+  box-sizing: border-box;
+  border-radius: 100px;
+}
+
+.projetos {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(230.65deg, #499CFE 27.49%, #9CC8FC 83.19%);
+  box-shadow: 2px 2px 4px rgba(16, 16, 16, 0.42);
+  border-radius: 20px;
+  padding: 32px;
+}
+
+.projetos__lista {
+  padding-left: 0;
+}
+
+.projetos__item {
+  list-style: none;
+  font-size: 24px;
+  font-weight: 400;
+  color: #1c1c1c;
+}
+
+.projetos__titulo {
+  font-size: 36px;
+  font-weight: 700;
+  margin: 0;
+}
+.projetos__item p {
+  margin-bottom: 0;
+}
+
+.projetos__item a {
+  color: #1c1c1c;
+  text-decoration: none;
+}
+
+.dark {
+  background: linear-gradient(236.85deg, #375B86 27.26%, #6B87A9 96.03%);
+}
+
+.dark .container {
+  background: #333439;
+  box-shadow: 6px 6px 6px #0E1D2F;
+}
+
+.dark .titulo {
+  color: #f7f7f7;
+}
+
+.dark .tema button {
+  background: #1C1C1C;
+  border: 2px solid #F7F7F7;
+  color: #FFFFFF;
+}
